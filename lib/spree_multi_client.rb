@@ -32,7 +32,8 @@ module SpreeMultiClient
 				Spree::RefundReason,
 				Spree::ReimbursementType,
 				Spree::ReturnAuthorizationReason,
-				Spree::Role
+				Spree::Role,
+				Spree::Vendor
 		]
 	end
 end
