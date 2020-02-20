@@ -18,6 +18,7 @@ module Spree
     has_many :states
     has_many :payment_methods
     has_many :shipping_categories
+    has_many :shipping_methods
     has_many :stock_transfers
     has_many :store_credit_categories
     has_many :refund_reasons
