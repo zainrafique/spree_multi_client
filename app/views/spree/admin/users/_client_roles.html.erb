@@ -1,0 +1,34 @@
+<div data-hook="admin_user_form_roles" class="form-group">
+	<strong><%= Spree.t(:roles) %></strong>
+	<% if defined?(current_spree_client) && current_spree_client %>
+		<%= f.collection_check_boxes :spree_role_ids, current_spree_client.roles, :id, :name do |role_form| %>
+			<div class="checkbox">
+				<%= role_form.label for: "user_spree_role_#{role_form.object.name}" do %>
+					<%= role_form.check_box id: "user_spree_role_#{role_form.object.name}" %>
+					<%= role_form.object.name %>
+				<% end %>
+			</div>
+		<% end %>
+	<% else %>
+		<%= f.collection_check_boxes :spree_role_ids, Spree::Role.all, :id, :name do |role_form| %>
+			<div class="checkbox">
+				<%= role_form.label for: "user_spree_role_#{role_form.object.name}" do %>
+					<%= role_form.check_box id: "user_spree_role_#{role_form.object.name}" %>
+					<%= role_form.object.name %>
+				<% end %>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+
+<% if current_spree_user.respond_to?(:has_spree_role?) && current_spree_user.has_spree_role?(:admin) %>
+	<%= f.field_container :vendor_ids, class: ['form-group'] do %>
+		<%= f.label :vendor_ids, Spree.t(plural_resource_name(Spree::Vendor)) %>
+		<%= f.collection_select(:vendor_ids, Spree::Vendor.all, :id, :name, { }, { class: 'select2', multiple: true }) %>
+	<% end %>
+<% elsif defined?(current_spree_client) && current_spree_client %>
+	<%= f.field_container :vendor_ids, class: ['form-group'] do %>
+		<%= f.label :vendor_ids, Spree.t(plural_resource_name(Spree::Vendor)) %>
+		<%= f.collection_select(:vendor_ids, current_spree_client.vendors, :id, :name, { }, { class: 'select2', multiple: true }) %>
+	<% end %>
+<% end %>
