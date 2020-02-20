@@ -33,7 +33,8 @@ module SpreeMultiClient
 				Spree::ReimbursementType,
 				Spree::ReturnAuthorizationReason,
 				Spree::Role,
-				Spree::Vendor
+				Spree::Vendor,
+				Spree::Taxon
 		]
 	end
 end

@@ -22,7 +22,6 @@ class Spree::ClientAbility
   end
 
   def apply_order_permissions
-    puts "zain123"*78
     cannot :create, Spree::Order
     can [:admin, :index, :edit, :update, :cart], Spree::Order, line_items: { product: { vendor: { client_id: @client_id } } }
   end

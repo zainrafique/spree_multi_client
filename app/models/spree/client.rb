@@ -24,6 +24,8 @@ module Spree
     has_many :reimbursement_types
     has_many :return_authorization_reasons
     has_many :roles
+    has_many :stores
+    has_many :taxons
     
   end
 end
