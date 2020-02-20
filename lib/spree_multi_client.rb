@@ -34,7 +34,8 @@ module SpreeMultiClient
 				Spree::ReturnAuthorizationReason,
 				Spree::Role,
 				Spree::Vendor,
-				Spree::Taxon
+				Spree::Taxon,
+				Spree::Product
 		]
 	end
 end

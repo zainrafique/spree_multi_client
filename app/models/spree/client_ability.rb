@@ -7,7 +7,7 @@ class Spree::ClientAbility
       can :manage, :all
       apply_permissions
       apply_order_permissions
-      apply_product_permissions
+      # apply_product_permissions
     end
   end
   
