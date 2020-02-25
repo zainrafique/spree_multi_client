@@ -7,7 +7,6 @@ Spree::Admin::StoresController.class_eval do
     end
     
     def load_shipping_methods
-      @shipping_methods = Spree::ShippingMethod.all
       @shipping_methods = (defined?(current_spree_client) && current_spree_client) ? current_spree_client.shipping_methods :  Spree::ShippingMethod.all
     end
 
