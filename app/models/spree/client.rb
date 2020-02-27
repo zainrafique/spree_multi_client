@@ -27,6 +27,9 @@ module Spree
     has_many :roles
     has_many :stores
     has_many :taxons
+    has_many :products
+    has_many :currencies
+    has_many :pages
     
   end
 end
