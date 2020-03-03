@@ -10,7 +10,7 @@ module SpreeMultiClient
   module VERSION
     MAJOR = 0
     MINOR = 0
-    TINY  = 8
+    TINY  = 9
     PRE   = 'alpha'.freeze
 
     STRING = [MAJOR, MINOR, TINY, PRE].compact.join('.')
