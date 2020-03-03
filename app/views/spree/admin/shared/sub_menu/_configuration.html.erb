@@ -7,7 +7,7 @@
   <%= configurations_sidebar_menu_item(Spree.t(:countries), spree.admin_countries_path) if can? :manage, Spree::Country %>
 
   <% if country = (defined?(current_spree_client) && current_spree_client) ? current_spree_client.countries.first : Spree::Country.first %>
-    <%= configurations_sidebar_menu_item(Spree.t(:states), spree.admin_country_states_path(country)) %>
+    <%= configurations_sidebar_menu_item(Spree.t(:states), spree.admin_country_states_path(country)) if can? :manage, Spree::Country %>
   <% end %>
 
   <%= configurations_sidebar_menu_item(Spree.t(:payment_methods), spree.admin_payment_methods_path) if can? :manage, Spree::PaymentMethod %>

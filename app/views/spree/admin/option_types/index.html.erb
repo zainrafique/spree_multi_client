@@ -17,7 +17,7 @@
       <th class="no-border"></th>
       <th><%= Spree.t(:name) %></th>
       <th><%= Spree.t(:presentation) %></th>
-      <% if current_spree_user.respond_to?(:has_spree_role?) && current_spree_user.has_spree_role?(:admin) %>
+      <% if current_spree_user.respond_to?(:has_spree_role?) && (current_spree_user.has_spree_role?(:admin)  || current_spree_user.has_spree_role?(:client)) %>
        <th><%= Spree.t(:vendor_name) %>
       <% end %>
       <th class="actions"></th>
