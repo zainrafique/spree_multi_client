@@ -30,6 +30,7 @@ module Spree
     has_many :products
     has_many :currencies
     has_many :pages
+    has_many :domains
     
   end
 end
