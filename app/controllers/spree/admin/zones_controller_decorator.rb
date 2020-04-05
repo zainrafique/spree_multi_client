@@ -1,4 +1,4 @@
-Spree::Admin::StoresController.class_eval do
+Spree::Admin::ZonesController.class_eval do
   
   
   protected
