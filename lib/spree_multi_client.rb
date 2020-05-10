@@ -23,8 +23,6 @@ module SpreeMultiClient
 				Spree::TaxCategory,
 				Spree::TaxRate,
 				Spree::Zone,
-				Spree::Country,
-				Spree::State,
 				Spree::PaymentMethod,
 				Spree::ShippingCategory,
 				Spree::StockTransfer,
