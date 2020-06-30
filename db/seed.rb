@@ -3,7 +3,7 @@ Spree::Role.find_or_create_by(name: "client")
 
 
 u = Spree::User.create(email: "spree@example.com", password: "12312!")
-u = Spree::User.where(email: "client1@example.com").last
+u = Spree::User.create(email: "taff@techsembly.com",password: "zxcvb123")
 u1 = Spree::User.where(email: "client2@example.com").last
 u2 = Spree::User.where(email: "client3@example.com").last
 c = Spree::Client.create(name: "client1")
