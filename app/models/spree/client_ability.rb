@@ -8,6 +8,10 @@ class Spree::ClientAbility
       apply_permissions
       apply_order_permissions
       # apply_product_permissions
+    elsif user.respond_to?(:has_spree_role?) && user.has_spree_role?('sub_client')
+      @client_id = user.client.id
+      can :manage, :all
+      apply_permissions
     end
   end
   
