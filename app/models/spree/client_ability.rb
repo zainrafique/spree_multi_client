@@ -12,6 +12,7 @@ class Spree::ClientAbility
       @client_id = user.client.id
       can :manage, :all
       apply_permissions
+      sub_client_stores(user)
     end
   end
   
@@ -23,6 +24,12 @@ class Spree::ClientAbility
       can :manage, model, client_id: @client_id
       can :create, model
     end
+  end
+
+  def sub_client_stores(user)
+    cannot :display, Spree::Store
+    can :manage, Spree::Store, {client_id: @client_id, id: user&.allow_store_ids}
+    can :create, Spree::Store
   end
 
   def apply_order_permissions
