@@ -7,12 +7,14 @@ class Spree::ClientAbility
       can :manage, :all
       apply_permissions
       apply_order_permissions
+      apply_question_permissions(user)
       # apply_product_permissions
     elsif user.respond_to?(:has_spree_role?) && user.has_spree_role?('sub_client')
       @client_id = user.client.id
       can :manage, :all
       apply_permissions
       sub_client_stores(user)
+      sub_client_questions(user)
     end
   end
   
@@ -32,6 +34,12 @@ class Spree::ClientAbility
     can :create, Spree::Store
   end
 
+  def sub_client_questions(user)
+    cannot :display, Spree::Question
+    can :manage, Spree::Question, {store_id: user&.allow_store_ids}
+    can :create, Spree::Question
+  end
+
   def apply_order_permissions
     cannot :create, Spree::Order
     can [:admin, :index, :edit, :update, :cart], Spree::Order, line_items: { product: { vendor: { client_id: @client_id } } }
@@ -41,6 +49,13 @@ class Spree::ClientAbility
     cannot :display, Spree::Product
     can :manage, Spree::Product, vendor: {client_id: @client_id}
     can :create, Spree::Product
+  end
+
+  def apply_question_permissions(user)
+    vendor_ids = user.client.vendors.ids
+    cannot :display, Spree::Question
+    can :manage, Spree::Question, {vendor_id: vendor_ids}
+    can :create, Spree::Question
   end
   
   
