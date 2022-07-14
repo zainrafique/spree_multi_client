@@ -35,7 +35,8 @@ module SpreeMultiClient
 				Spree::Taxon,
 				Spree::Product,
 				Spree::Currency,
-				Spree::Page
+				Spree::Page,
+				Spree::Tag
 		]
 	end
 end
