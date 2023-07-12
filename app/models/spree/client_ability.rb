@@ -22,20 +22,20 @@ class Spree::ClientAbility
   
   def apply_permissions
     SpreeMultiClient.clientized_models.each do |model|
-      cannot :display, model
+      cannot :read, model
       can :manage, model, client_id: @client_id
       can :create, model
     end
   end
 
   def sub_client_stores(user)
-    cannot :display, Spree::Store
+    cannot :read, Spree::Store
     can :manage, Spree::Store, {client_id: @client_id, id: user&.allow_store_ids}
     can :create, Spree::Store
   end
 
   def sub_client_questions(user)
-    cannot :display, Spree::Question
+    cannot :read, Spree::Question
     can :manage, Spree::Question, {store_id: user&.allow_store_ids}
     can :create, Spree::Question
   end
@@ -46,14 +46,14 @@ class Spree::ClientAbility
   end
 
   def apply_product_permissions
-    cannot :display, Spree::Product
+    cannot :read, Spree::Product
     can :manage, Spree::Product, vendor: {client_id: @client_id}
     can :create, Spree::Product
   end
 
   def apply_question_permissions(user)
     vendor_ids = user.client.vendors.ids
-    cannot :display, Spree::Question
+    cannot :read, Spree::Question
     can :manage, Spree::Question, {vendor_id: vendor_ids}
     can :create, Spree::Question
   end
